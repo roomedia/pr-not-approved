@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                width: 450px;
+                min-height: 200px;
+            }
+
+            #control-box {
+                text-align: end;
+            }
+
+            .filter {
+                width: 440px;
+                margin: .2rem 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="control-box">
+            <button id="add">Add Url</button>
+            <button id="save">Save</button>
+        </div>
+        <div id="filter-list">
+            <input type="text" class="filter" value="https://github.com/pulls*" disabled />
+        </div>
+        <script src="/js/popup.js"></script>
+    </body>
+</html>

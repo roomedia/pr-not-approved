@@ -1,0 +1,12 @@
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### Firefox ###
+web-ext-artifacts/
+.web-extension-id
+
+### Vim ###
+**/*.swp
