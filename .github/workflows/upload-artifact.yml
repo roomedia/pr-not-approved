@@ -2,11 +2,6 @@ name: Upload Artifact CI
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'version of add-on'
-        required: true
-        type: string
 
 jobs:
   build:
@@ -17,5 +12,5 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.0.0
       with:
-        name: pr-not-approved-${{ inputs.version }}.zip
+        name: pr-not-approved
         path: ./web-ext-artifacts/pr-not-approved.zip
