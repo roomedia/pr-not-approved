@@ -5,6 +5,13 @@ on:
     branches: [ main, chrome ]
   pull_request:
     branches: [ main, chrome ]
+    
+  workflow_call:
+    inputs:
+      version:
+        description: 'version of add-on'
+        required: true
+        type: string
 
 jobs:
   build:
