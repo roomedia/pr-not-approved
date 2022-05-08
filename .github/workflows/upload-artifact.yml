@@ -12,5 +12,5 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.0.0
       with:
-        name: pr-not-approved-${{ github.head_ref }}
+        name: pr-not-approved-$(echo ${{ github.head_ref }})
         path: ./web-ext-artifacts/pr-not-approved.zip
