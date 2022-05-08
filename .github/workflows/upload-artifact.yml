@@ -1,12 +1,7 @@
 name: Upload Artifact CI
 
 on:
-  push:
-    branches: [ main, chrome ]
-  pull_request:
-    branches: [ main, chrome ]
-    
-  workflow_call:
+  workflow_dispatch:
     inputs:
       version:
         description: 'version of add-on'
