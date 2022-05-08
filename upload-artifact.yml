@@ -1,0 +1,19 @@
+name: Upload Artifact CI
+
+on:
+  push:
+    branches: [ main, chrome ]
+  pull_request:
+    branches: [ main, chrome ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: zip -r pr-not-approved.zip . && mkdir web-ext-artifacts && mv pr-not-approved-1.0.1.zip web/
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.0.0
+      with:
+        name: pr-not-approved-${{ inputs.version }}.zip
+        path: ./web/pr-not-approved.zip
