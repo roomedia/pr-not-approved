@@ -1,20 +1,30 @@
 {
     "manifest_version": 3,
+    "minimum_chrome_version": "92",
+
     "name": "pr-not-approved",
     "description": "Find Pull Requests that have been reviewed but not approved",
     "version": "1.0.0",
+    "icons": {
+        "16": "/ico/icon16.png",
+        "48": "/ico/icon48.png",
+        "128": "/ico/icon128.png"
+    },
 
     "background": {
-        "page": "/html/background.html"
+        "service_worker": "/js/add_web_request_on_complete_listener.js",
+        "type": "module"
     },
-
-    "browser_action": {
+    "action": {
         "default_popup": "/html/popup.html"
     },
+
     "permissions": [
-        "tabs",
+        "scripting",
         "storage",
-        "webRequest",
+        "webRequest"
+    ],
+    "host_permissions": [
         "<all_urls>"
     ]
 }
