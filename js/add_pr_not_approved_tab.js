@@ -6,19 +6,27 @@ function addPrNotApprovedTab() {
 
     const searchText = decodeURIComponent(document.querySelector(".subnav-links > a").href)
     const userName = document.querySelector("meta[name='user-login']").content
-    const originalRegex = new RegExp(`(author|assignee|mentions|review-requested|reviewed-by):${userName}`, "g")
-    const query = searchText.split("=")[1].split("+").filter((ele) => !originalRegex.test(ele) && ele !== "-review:approved").concat([`reviewed-by:${userName}`, "-review:approved"]).join("+")
+
+    const regex = new RegExp(`(author|assignee|mentions|review-requested):${userName}`, "g")
+    const customRegex = new RegExp(`reviewed-by:${userName}|-review:approved`, "g")
+
+    const query = searchText
+        .split("=")[1]
+        .split("+")
+        .filter((ele) => !regex.test(ele) && !customRegex.test(ele))
+        .concat([`reviewed-by:${userName}`, "-review:approved"])
+        .join("+")
     prNotApproved.href = `/pulls?q=${query}`
 
-    const extraRegex = new RegExp(`reviewed-by:${userName}`, "g")
-    const isSelected = searchText.search(extraRegex) > -1 && searchText.search("-review:approved") > -1
+    const isSelected = searchText.search(customRegex) > -1
     if (isSelected) {
         prNotApproved.className += " selected"
     }
 
     const parent = document.querySelector(".subnav-links")
     parent.querySelectorAll("a").forEach((ele) => {
-        ele.href = decodeURIComponent(ele.href).replace(extraRegex, "")
+        ele.href = decodeURIComponent(ele.href)
+            .replaceAll(customRegex, "")
     })
     parent.appendChild(prNotApproved)
 }
