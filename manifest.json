@@ -1,8 +1,20 @@
 {
     "manifest_version": 2,
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "pr-not-approved@roomedia",
+            "strict_min_version": "53"
+        }
+    },
+
     "name": "pr-not-approved",
     "description": "Find Pull Requests that have been reviewed but not approved",
     "version": "1.0.0",
+    "icons": {
+        "16": "/ico/icon16.png",
+        "48": "/ico/icon48.png",
+        "128": "/ico/icon128.png"
+    },
 
     "background": {
         "page": "/html/background.html"
