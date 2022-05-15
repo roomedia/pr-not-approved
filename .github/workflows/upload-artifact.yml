@@ -14,27 +14,14 @@ jobs:
       run: |
         version=$(cat manifest.json | grep \"version\": | sed -e 's/[ ,\t:\/\\"<>|*?]/-/g' -e 's/--*/-/g')
         branch=$(echo -n "${GITHUB_REF#refs/heads/}" | sed -e 's/[ \t:\/\\"<>|*?]/-/g' -e 's/--*/-/g')
-        node_modules=$(npm root -g)
         echo "VERSION=$version" >> $GITHUB_ENV
         echo "BRANCH=$branch" >> $GITHUB_ENV
-        echo "NODE_MODULES=$node_modules" >> $GITHUB_ENV
 
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '16'
 
-    - name: Cache node modules
-      id: node-cache
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-node-modules
-      with:
-        path: ${{ env.NODE_MODULES }}
-        key: ${{ runner.os }}-node-modules-${{ hashFiles('${{ env.NODE_MODULES }}/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-modules-
-            
     - name: Install web-ext
       run: npm install --global web-ext
 
