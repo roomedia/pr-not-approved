@@ -1,4 +1,4 @@
-import { addPrNotApprovedTab } from '../common/js/add_pr_not_approved_tab.js'
+import { addPrNotApprovedTab } from './add_pr_not_approved_tab.js'
 
 function executeScriptListener(details) {
     setTimeout(() => {
