@@ -31,5 +31,5 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.0.0
       with:
-        name: pr-not-approved-${{ env.VERSION }}${{ env.BRANCH }}
+        name: pr-not-approved${{ env.VERSION }}${{ env.BRANCH }}
         path: ./web-ext-artifacts/pr-not-approved-*.zip
