@@ -28,13 +28,13 @@ jobs:
       env:
         cache-name: cache-node-modules
       with:
-        path: node_modules
+        path: ${npm root -g}
         key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-modules-
             
     - name: Install web-ext
-      run: npm install web-ext
+      run: npm install --global web-ext
 
     - name: Archive extension
       run: web-ext build --ignore-files README.md
