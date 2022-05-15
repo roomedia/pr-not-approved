@@ -21,9 +21,18 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '16'
-        cache: npm
-        cache-dependency-path: ./node-app/package-lock.json
 
+    - name: Cache node modules
+      id: node-cache
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules-
+            
     - name: Install web-ext
       run: npm install web-ext
 
