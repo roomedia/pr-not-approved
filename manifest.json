@@ -2,8 +2,8 @@
     "manifest_version": 2,
     "browser_specific_settings": {
         "gecko": {
-            "id": "pr-not-approved@roomedia",
-            "strict_min_version": "53"
+            "id": "{f914e39c-c288-4314-89b7-b63bd8f043f0}",
+            "strict_min_version": "57.0"
         }
     },
 
