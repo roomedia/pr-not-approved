@@ -22,10 +22,10 @@ jobs:
       with:
         node-version: '16'
         cache: npm
-        cache-dependency-path: perfanalytics-api/package-lock.json
+        cache-dependency-path: ./node-app/package-lock.json
 
     - name: Install web-ext
-      run: npm install --global web-ext
+      run: npm install web-ext
 
     - name: Archive extension
       run: web-ext build --ignore-files README.md
